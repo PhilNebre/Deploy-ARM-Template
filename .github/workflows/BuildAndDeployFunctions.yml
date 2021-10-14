@@ -1,9 +1,9 @@
 - name: Setup DotNet 2.2.402 Environment
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 2.2.402
-        
-    env:
+  uses: actions/setup-dotnet@v1
+  with:
+    dotnet-version: 2.2.402
+    
+env:
       AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
 
     - name: 'Resolve Project Dependencies Using Dotnet'
@@ -13,7 +13,7 @@
         dotnet build --configuration Release --output ./output
         popd
         
-        name: Deploy DotNet project to function app with a Windows environment
+name: Deploy DotNet project to function app with a Windows environment
 
 on:
   [push]
@@ -47,4 +47,4 @@ jobs:
       with:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
         package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-        publish-profile: ${{ secrets.AZURE_CREDENTIALS }}
+        publish-profile: ${{ secrets.AZURE_CREDENTIALS }} 
